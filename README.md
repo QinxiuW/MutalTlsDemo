@@ -14,10 +14,10 @@ default password: changeit
 # Generar archivo de clave de servidor localhost.jks (cabe modificar los datos sobre la empresa)
 keytool -genkey -alias localhost -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -storetype JKS -keystore localhost.jks -dname CN=localhost,OU=Test,O=pkslow,L=Baleares,C=ES -validity 365 -storepass changeit -keypass changeit
 
-# Exportar el archivo de certificado del servidor(localhost) (cabe modificar los datos sobre la empresa)
+# Exportar el archivo de certificado del servidor(localhost)
 keytool -export -alias localhost -file localhost.cer -keystore localhost.jks
 
-# Generar el archivo de clave del cliente client.jks
+# Generar el archivo de clave del cliente client.jks  (cabe modificar los datos sobre la empresa)
 keytool -genkey -alias client -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -storetype JKS -keystore client.jks -dname CN=client,OU=Test,O=pkslow,L=Baleares,C=ES -validity 365 -storepass changeit -keypass changeit
 
 # Exportar el archivo de certificado del cliente
