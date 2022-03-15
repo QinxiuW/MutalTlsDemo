@@ -8,12 +8,16 @@ Este proyecto consta de 2 partes:
 1. Server: la entidad que verifica el certificado en doble sentido.
 2. Client: la entidad que emite petición hacia el Server junto con el certificado.
 
-## Herramients utilizadas
+
+
+## Generación de certificados
+
+default password: changeit
+
+### Herramients utilizadas
 1. keytool: proporcionado por jre.
 2. curl
 
-## Generación de certificados
-default password: changeit
 ```bash
 # Generar archivo de clave de servidor localhost.jks (cabe modificar los datos sobre la empresa)
 keytool -genkey -alias localhost -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -storetype JKS -keystore localhost.jks -dname CN=localhost,OU=Test,O=pkslow,L=Baleares,C=ES -validity 365 -storepass changeit -keypass changeit
