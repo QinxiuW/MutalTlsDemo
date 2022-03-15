@@ -8,6 +8,10 @@ Este proyecto consta de 2 partes:
 1. Server: la entidad que verifica el certificado en doble sentido.
 2. Client: la entidad que emite petición hacia el Server junto con el certificado.
 
+## Herramients utilizadas
+1. keytool: proporcionado por jre.
+2. curl
+
 ## Generación de certificados
 default password: changeit
 ```bash
