@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: client
+---
+server:
+  port: 9443
+
+key-store:
+  path: ssl/client.jks
+  password: changeit
+  type: jks
+---
+endpoint:
+  ms-service: https://localhost:443/server/hello

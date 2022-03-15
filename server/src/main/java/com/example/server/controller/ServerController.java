@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Created by Qinxiu Wang
  */
 @RestController
-@RequestMapping
+@RequestMapping("/server")
 public class ServerController {
 
   @GetMapping(value = "/hello", produces = "application/json")
