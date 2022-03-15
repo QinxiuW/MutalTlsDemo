@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/server")
 public class ServerController {
 
+  /**
+   * get Info.
+   *
+   * @return {@link ResponseEntity} with {@code String} as data.
+   */
   @GetMapping(value = "/hello", produces = "application/json")
-  public ResponseEntity<String> get() {
+  public ResponseEntity<String> getInfo() {
     String info = "Getting infos resource from Server";
     System.out.println(info);
     return ResponseEntity.ok(info);
