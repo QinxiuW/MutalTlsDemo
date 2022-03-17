@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -33,6 +34,12 @@ public class RestTemplateConfig {
   @Value("${key-store.type}")
   private String keyStoreType;
 
+  @Value("${trust-store.path}")
+  private String trustStoreCert;
+
+  @Value("${trust--store.password}")
+  private String trustStorePassword;
+
   /**
    * Init RestTemplate with keyStore infos.
    *
@@ -49,9 +56,12 @@ public class RestTemplateConfig {
       ClassPathResource classPathResource = new ClassPathResource(ketStoreCert);
       InputStream inputStream = classPathResource.getInputStream();
       keyStore.load(inputStream, keyStorePassword.toCharArray());
+
       SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(
-          new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy())
-              .loadKeyMaterial(keyStore, keyStorePassword.toCharArray()).build());
+          new SSLContextBuilder()
+              .loadTrustMaterial(ResourceUtils.getFile("classpath:" + trustStoreCert))
+              .loadKeyMaterial(keyStore, keyStorePassword.toCharArray())
+              .build());
 
       HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory)
           .setMaxConnTotal(5)

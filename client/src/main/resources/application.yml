@@ -9,6 +9,9 @@ key-store:
   path: ssl/client.jks
   password: changeit
   type: jks
+trust-store:
+  path: ssl/client.jks
+  password: changeit
 ---
 endpoint:
   ms-service: https://localhost:443/server/hello
